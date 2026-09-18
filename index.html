@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pomodoro Desk</title>
+  <meta name="description" content="A simple Pomodoro timer with a task list. Work 25, break 5, long break 15.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1><span class="tomato" aria-hidden="true">&#127813;</span> Pomodoro Desk</h1>
+    <p class="stats" id="statsLine">Today: 0 &middot; Total: 0</p>
+  </header>
+
+  <main>
+    <section class="card timer-card" aria-label="Timer">
+      <div class="phase" id="phaseLabel">Work</div>
+      <div class="time" id="timeDisplay" role="timer" aria-live="off">25:00</div>
+      <div class="dots" id="cycleDots" aria-label="Cycle progress: 0 of 4 work sessions done"></div>
+
+      <div class="controls">
+        <button id="startPauseBtn" class="btn primary" type="button">Start</button>
+        <button id="resetBtn" class="btn" type="button">Reset</button>
+      </div>
+
+      <div class="settings">
+        <label>Work <span class="unit">min</span>
+          <input type="number" id="workInput" min="1" max="180" step="1" value="25" inputmode="numeric">
+        </label>
+        <label>Short break <span class="unit">min</span>
+          <input type="number" id="shortInput" min="1" max="90" step="1" value="5" inputmode="numeric">
+        </label>
+        <label>Long break <span class="unit">min</span>
+          <input type="number" id="longInput" min="1" max="90" step="1" value="15" inputmode="numeric">
+        </label>
+      </div>
+      <p class="hint">4 work sessions &rarr; long break. Changing a duration resets the current phase.</p>
+    </section>
+
+    <section class="card tasks-card" aria-label="Tasks">
+      <h2>Tasks</h2>
+      <form id="taskForm" autocomplete="off">
+        <input id="taskInput" type="text" placeholder="Add a task&hellip;" maxlength="200" aria-label="New task">
+        <button class="btn primary" type="submit">Add</button>
+      </form>
+      <ul id="taskList"></ul>
+      <p class="empty hidden" id="taskEmpty">No tasks yet. Add one above.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Your tasks and session counts are saved in this browser only.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
